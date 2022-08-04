@@ -1,0 +1,97 @@
+<div class="modal">
+    <button type="button" class="modal__close icon-close" aria-label="Close modal window"></button>
+    <div class="modal__body">
+        <div class="modal__search search-modal">
+            <form action="#" method="POST" class="search-modal__form">
+                <div class="search-modal__body">
+                    <label class="search-modal__label">
+                        <input class="search-modal__input" name="search" autocomplete="off" placeholder="search here . . ." type="text">   
+                    </label>
+                    <button type="submit" class="search-modal__btn icon-search" aria-label="Search"></button>
+                </div>
+            </form>  
+            <div class="search-modal__results search-results">
+                
+            </div>
+        </div>
+        <form action="#" method="POST" class="modal__login form-modal">
+            <h4 class="form-modal__title">Login</h4> 
+            <div class="form-modal__content">
+                <label class="form-modal__label">                    
+                    <input class="form-modal__input" name="Email" placeholder="Email" type="email" autocomplete="off" data-validate-field="email">
+                </label>
+                <label class="form-modal__label">                    
+                    <input class="form-modal__input" name="Password" placeholder="Password" type="password" autocomplete="off" data-validate-field="password">
+                </label>                        
+                <label class="form-modal__label">
+                    <input name="Password-checkbox[]" type="checkbox" class="form-modal__checkbox checkbox" value="Save">
+                    <span class="form-modal__tag checkbox-tag">Save Password</span>
+                </label>
+            </div> 
+            <button type="submit" class="form-modal__btn btn">Login</button>
+        </form> 
+        <form action="#" method="POST" class="modal__ask form-modal">
+            <h4 class="form-modal__title">Ask a question</h4> 
+            <div class="form-modal__content">
+                <label class="form-modal__label">                    
+                    <input class="form-modal__input" name="Name" placeholder="Name" type="text" autocomplete="off" data-validate-field="name">
+                </label>
+                <label class="form-modal__label">                    
+                    <input class="form-modal__input" name="Email" placeholder="Email" type="email" autocomplete="off" data-validate-field="email">
+                </label>   
+                <label class="form-modal__textarea">
+                    <textarea name="Textarea" autocomplete="off" placeholder="Ask a question" data-validate-field="text"></textarea>
+                </label>
+            </div> 
+            <button type="submit" class="form-modal__btn btn">Send</button>
+        </form> 
+        <form action="#" method="POST"  class="modal__checkout form-modal" data-simplebar>
+            <div class="form-modal__title">Checkout</div>
+            <div class="form-modal__content">
+                <label class="form-modal__label">                    
+                    <input class="form-modal__input" name="Fullname" placeholder="Fullname" type="text" autocomplete="off" data-validate-field="fullname">
+                </label>
+                <label class="form-modal__label">                    
+                    <input class="form-modal__input" name="Phone" placeholder="Phone" type="tel" autocomplete="off" data-validate-field="phone">
+                </label>
+                <label class="form-modal__label">                    
+                    <input class="form-modal__input" name="Email" placeholder="Email" type="email" autocomplete="off" data-validate-field="email">
+                </label>
+            
+                <label class="form-modal__label">                    
+                    <input class="form-modal__input" name="Address" placeholder="Address" type="text" autocomplete="off" data-validate-field="address">
+                </label>
+                <select name="Payment" class="form-modal__select">                    
+                    <option class="form-modal__option" value="">Choose payment method</option>
+                    <option class="form-modal__option" value="Credit_card">Credit card</option>
+                    <option class="form-modal__option" value="Cash_on_delivery">Cash on delivery</option>
+                </select>
+                <label class="form-modal__subscribe">
+                    <input name="Subscribe"  type="checkbox" class="form-modal__checkbox checkbox" value="Subscribe_for_news">
+                    <span class="form-modal__tag checkbox-tag">Subscribe for news</span>
+                </label>
+            </div>
+            <div class="form-modal__order order-checkout"></div>
+        </form> 
+        <div class="modal__content content-modal"></div>
+        <div class="modal__product product-modal">
+            <div class="product-modal__wrapper" data-simplebar>
+                <div class="product-modal__body">
+                    <div class="product-modal__image"></div>
+                    <div class="product-modal__content">                    
+                        <h3 class="product-modal__title"></h3>
+                        <div class="product-modal__price"></div> 
+                        <div class="product-modal__stars"></div>                        
+                        <ul class="product-modal__spec">
+                            <li class="product-modal__column product-modal__column_left"></li>
+                            <li class="product-modal__column product-modal__column_right"></li>
+                        </ul>                        
+                        <button type="button" class="product-modal__btn btn">Add to cart</button>                        
+                    </div>
+                </div>   
+                <div class="product-modal__descr"></div>             
+            </div>
+        </div>
+        <div class="modal__message"></div>
+    </div>
+</div>

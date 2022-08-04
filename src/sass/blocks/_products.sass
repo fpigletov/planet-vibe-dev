@@ -1,0 +1,96 @@
+.products
+
+    &__container
+        position: relative
+
+    &__title
+        text-align: center
+        margin-bottom: 40px
+        @media (max-width: $md4)
+            margin-bottom: 25px
+
+    &__item
+        display: flex
+        align-items: center
+        flex-direction: column
+        border: $border
+        border-radius: 20px
+        @media (any-hover: hover)
+            &:hover
+                .item-products__icons
+                    transform: translateY(0)
+                    transition: transform 0.5s ease 0s
+
+    &__arrows
+        padding: 0 30px
+
+.item-products
+    min-height: 426px
+    text-align: center
+
+    &__image
+        position: relative
+        flex: 0 0 280px
+        width: 100%
+        overflow: hidden
+        border-top-left-radius: 20px
+        border-top-right-radius: 20px
+        img
+            border-top-left-radius: 20px
+            border-top-right-radius: 20px
+
+    &__icons
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 100%
+        position: absolute
+        bottom: 20px
+        left: 0
+        z-index: 10
+        @media (any-hover:hover)
+            transform: translateY(70px)
+            transition: transform 0.5s ease 0s
+
+    &__btn
+        height: 45px
+        flex: 0 0 45px
+        font-size: 25px
+        background-color: $dark-color
+        color: $white-color
+        display: flex
+        justify-content: center
+        align-items: center
+        transition: background-color 0.3s ease 0s
+        &:not(:last-child)
+            margin-right: 2px
+        @media (any-hover:hover)
+            &:hover
+                background-color: $green-color
+
+    &__content
+        flex: 1 1 auto
+        display: flex
+        align-items: center
+        flex-direction: column
+        padding: 20px
+
+    &__title
+        flex: 1 1 auto
+        font-size: 20px
+        line-height: 110%
+        margin-bottom: 10px
+
+    &__price
+        font-size: 18px
+        color: $green-color
+        margin-bottom: 10px
+
+    &__stars
+        display: flex
+        justify-content: center
+        font-size: 20px
+        color: gold
+
+    &__hidden
+        display: none

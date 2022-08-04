@@ -1,0 +1,560 @@
+.modal
+    position: fixed
+    top: 0
+    left: 0
+    height: 100%
+    width: 100%
+    background-color: rgba(0, 0, 0, 0.8)
+    display: flex
+    align-items: center
+    justify-content: center
+    z-index: 1000
+    opacity: 0
+    visibility: hidden
+    transform: translateY(-100%)
+    transition: transform 0.3s ease, opacity 0.3s ease, visability 0.3s ease
+    &.active
+        transform: translateY(0)
+        opacity: 1
+        visibility: visible
+        transition: transform 0.3s ease, opacity 0.3s ease, visability 0.3s ease
+
+    &__content,
+    &__product,
+    &__search,
+    &__checkout,
+    &__message
+        display: none
+        &.active
+            display: block
+
+    &__ask,
+    &__login
+        display: none
+        &.active
+            display: flex
+
+    &__search
+        padding: 50px 10px
+        width: 600px
+        height: 100%
+        @media (max-width: $md3)
+            width: 500px
+        @media (max-width: $md3)
+            width: 280px
+
+    &__product,
+    &__content,
+    &__checkout
+        padding: 20px
+        border-radius: 20px
+        background-color: $white-color
+        @media (max-width: $md4)
+            padding: 10px
+
+    &__content
+        width: 600px
+        height: 500px
+        @media (max-width: $md3)
+            width: 90vw
+            height: 60vh
+        @media (max-width: $md4)
+            height: 80vh
+
+    &__product
+        width: 600px
+        height: 500px
+        @media (max-width: $md3)
+            width: 90vw
+            height: 55vh
+        @media (max-width: $md4)
+            height: 80vh
+
+    &__login,
+    &__ask,
+    &__message
+        width: 300px
+        border-radius: 20px
+        padding: 20px
+        background-color: $white-color
+        @media (max-width: 350px)
+            width: 260px
+
+    &__message
+        text-align: center
+
+    &__login
+        height: 300px
+
+    &__checkout
+        overflow-y: auto
+        overflow-x: hidden
+        height: 500px
+        width: 470px
+        .simplebar-offset
+            padding: 20px 0
+        @media (max-width: $md1)
+            height: 60vh
+        @media (max-width: $md4)
+            height: 70vh
+            width: 90vw
+
+    &__close
+        position: absolute
+        top: 30px
+        right: 30px
+        cursor: pointer
+        color: $white-color
+        font-size: 40px
+        transition: color 0.3s ease 0s
+        @media (any-hover: hover)
+            &:hover
+                color: $green-color
+        @media (max-width: $md4)
+            font-size: 30px
+            top: 20px
+            right: 25px
+        @media (max-width: 350px)
+            font-size: 26px
+
+.search-modal
+
+    &__body
+        display: flex
+        align-items: center
+        padding: 5px 0
+        border-bottom: 2px solid $white-color
+        transition: border-color 0.3s ease
+        &:focus-within
+            border-color: $green-color
+
+    &__label
+        display: block
+        width: 100%
+
+    &__input
+        width: 100%
+        font-size: 18px
+        color: $white-color
+        text-transform: none
+        background: none
+        padding: 0 10px
+        @media (max-width: $md4)
+            font-size: 16px
+
+    &__btn
+        color: $white-color
+        font-size: 20px
+        transition: color 0.3s ease 0s
+        @media (any-hover: hover)
+            &:hover
+                color: $green-color
+
+    &__results
+        padding: 10px
+        margin-top: 20px
+
+.search-results
+
+    &__item
+        &:not(&:last-child)
+            margin-bottom: 10px
+
+    &__link
+        color: $white-color
+        font-weight: 600
+        transition: color 0.3s ease 0s
+        @media (any-hover: hover)
+            &:hover
+                color: $green-color
+        @media (max-width: $md4)
+            font-size: 14px
+
+    &__false
+        color: $white-color
+        font-size: 18px
+        font-weight: 600
+
+.content-modal
+    .simplebar-content-wrapper
+        border-radius: 20px
+
+    &__wrapper
+        width: 100%
+        height: 100%
+        overflow-y: auto
+        overflow-x: hidden
+
+    &__image
+        height: 350px
+        img
+            border-top-left-radius: 20px
+            border-top-right-radius: 20px
+
+    &__body
+        padding: 10px
+        @media (max-width: $md4)
+            padding: 5px
+
+    &__top
+        margin: 10px 0
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+    &__title
+        color: $green-color
+        font-size: 24px
+        font-weight: 700
+        padding-right: 10px
+
+    &__descr
+        line-height: 120%
+
+    &__addition
+        font-weight: 700
+
+.product-modal
+
+    &__wrapper
+        width: 100%
+        height: 100%
+        overflow-y: auto
+        overflow-x: hidden
+
+    &__body
+        display: grid
+        grid-template-columns: repeat(2, 1fr)
+        column-gap: 30px
+        padding-right: 5px
+        margin-bottom: 15px
+        @media (max-width: 600px)
+            grid-template-columns: 1fr
+            padding: 0
+
+    &__image
+        @media (max-width: 600px)
+            margin-bottom: 20px
+            border-top-left-radius: 20px
+            border-top-right-radius: 20px
+            img
+                border-top-left-radius: 20px
+                border-top-right-radius: 20px
+
+    &__title
+        color: $green-color
+        font-size: 24px
+        font-weight: 700
+        margin-bottom: 15px
+
+    &__price
+        font-size: 20px
+        font-weight: 700
+        margin-bottom: 10px
+
+    &__stars
+        display: flex
+        align-items: center
+        margin-bottom: 30px
+        color: gold
+        @media (max-width: 600px)
+            margin-bottom: 10px
+
+    &__spec
+        margin-bottom: 25px
+        display: flex
+        align-items: flex-start
+
+    &__column
+
+        &_left
+            font-weight: 600
+            color: $green-color
+            margin-right: 10px
+
+        &_right
+            color: $dark-color
+            font-weight: 400
+        span
+            display: block
+            &:not(:last-child)
+                margin-bottom: 5px
+
+    &__btn
+        height: 45px
+        padding: 0 25px
+
+    &__descr
+        line-height: 120%
+        padding-right: 10px
+        p
+            &:not(:last-child)
+                margin-bottom: 5px
+
+.form-modal
+    flex-direction: column
+    align-items: center
+    justify-content: center
+
+    &__title
+        color: $green-color
+        font-size: 32px
+        font-weight: 700
+        margin-bottom: 25px
+        text-align: center
+
+    &__content
+        width: 100%
+
+    &__label
+        display: block
+        width: 100%
+        min-height: 30px
+        margin-bottom: 20px
+
+    .choices
+        width: 100%
+        border-bottom: $border
+        transition: border-color 0.3s ease
+        &.is-focused
+            border-color: $green-color
+
+    .choices__inner
+        margin: 0
+        padding: 0
+        border: none
+        align-items: flex-end
+        min-height: 30px
+        background-color: $white-color
+
+    .choices[data-type*=select-one]::after
+        border: none
+        top: 35%
+        background: url('../resources/icons/ic/arrow-down.svg') center/cover no-repeat
+        height: 10px
+        width: 15px
+        transition: transform 0.3s ease, margin-top 0.3s ease
+
+    .choices[data-type*=select-one].is-open::after
+        margin-top: -4px
+        transform: rotate(-180deg)
+
+    .choices__list--single
+        padding: 5px 5px 0 5px
+
+    .choices__list--single .choices__placeholder
+        color: $dark-color
+        font-size: 14px
+        font-weight: 600
+        opacity: 0.5
+
+    .choices__item
+        color: $dark-color
+        font-size: 14px
+        font-weight: 600
+        transition: border-color 0.3s ease
+        &.is-highlighted
+            background-color: $light-color
+            border-bottom: 2px solid $green-color
+
+    .choices__list--dropdown .choices__item--selectable.is-highlighted::after
+        display: none
+
+    &__input,
+    textarea
+        width: 100%
+        border-bottom: $border
+        outline: none
+        color: $dark-color
+        font-size: 14px
+        font-weight: 600
+        padding: 5px
+        transition: border-color 0.3s ease
+        &:focus
+            border-color: $green-color
+
+        &::placeholder
+            color: $dark-color
+            font-size: 14px
+            font-weight: 600
+            opacity: 0.5
+
+    &__textarea
+        display: block
+        margin-bottom: 20px
+        textarea
+            resize: vertical
+            min-height: 80px
+
+    &__checkbox:focus + .form-modal__tag
+        padding-bottom: 5px
+        border-bottom: 2px solid $green-color
+
+    &__tag
+        padding-left: 25px
+        font-size: 14px
+
+    &__btn
+        flex: 0 0 40px
+        padding: 0 40px
+
+    &__order
+        margin-top: 30px
+
+//Checkout
+.order-checkout
+
+    &__title
+        font-size: 26px
+        font-weight: 600
+        color: $green-color
+        margin-bottom: 10px
+
+    &__items
+        margin-bottom: 20px
+
+    &__item
+        padding: 10px
+        border: $border
+        &:not(:last-child)
+            margin-bottom: 15px
+
+    &__footer
+        display: flex
+        flex-direction: column
+        align-items: flex-end
+
+    &__total
+        color: $dark-color
+        font-size: 24px
+        font-weight: 700
+        text-transform: uppercase
+        margin-bottom: 25px
+        span
+            padding-left: 5px
+            font-size: 28px
+            font-weight: 600
+            color: $green-color
+
+    &__btn
+        height: 45px
+        padding: 0 25px
+        font-size: 18px
+        &.hold
+            opacity: 0.2
+            cursor: default
+
+    &__empty
+        text-align: center
+        padding: 50px 0 80px 0
+
+.empty-checkout
+    color: $dark-color
+
+    &__text
+        margin-bottom: 10px
+        font-size: 24px
+        font-weight: 600
+
+.empty-link
+    font-size: 20px
+    font-weight: 600
+    a
+        color: $green-color
+        font-size: 24px
+        font-weight: 700
+        text-decoration: underline
+        transition: text-decoration-color 0.3s ease 0s
+        text-decoration-color: $white-color
+        @media (any-hover: hover)
+            &:hover
+                text-decoration-color: $green-color
+
+.item-checkout
+    background-color: $white-color
+
+    &__top
+        display: flex
+        justify-content: flex-end
+        margin-bottom: 10px
+
+    &__close
+        color: $dark-color
+        font-weight: 900
+        font-size: 24px
+        transition: color 0.3 ease 0s
+        align-self: flex-start
+        @media (any-hover: hover)
+            &:hover
+                color: $green-color
+
+    &__wrapper
+        display: flex
+
+    &__content
+        flex: 1 1 auto
+
+    &__body
+        display: flex
+        justify-content: space-between
+        flex: 1 1 auto
+
+    &__image
+        flex: 0 0 100px
+        height: 100%
+        margin-right: 15px
+
+    &__descr
+        padding-right: 15px
+        flex: 1 1 auto
+        @media (max-width: $md4)
+            padding-right: 0
+
+    &__title
+        display: block
+        font-size: 14px
+        line-height: 130%
+        font-weight: 900
+        color: $green-color
+        transition: all 0.3s ease 0s
+        margin-bottom: 10px
+
+    &__footer
+        display: flex
+        align-items: center
+        justify-content: space-between
+        max-width: 180px
+        @media (max-width: $md4)
+            width: 100%
+
+    &__price
+        font-size: 20px
+        font-weight: 900
+        color: $dark-color
+
+    &__quantity
+        display: flex
+        justify-content: center
+        align-items: center
+        flex: 0 0 20px
+        height: 20px
+        border: 1px solid $dark-color
+        background-color: $white-color
+        color: $dark-color
+        font-size: 12px
+        font-weight: 600
+
+    &__total
+        font-size: 16px
+        font-weight: 500
+        span
+            display: block
+            color: $green-color
+            font-size: 24px
+            font-weight: 700
+            margin-top: 5px
+        @media (max-width: $md4)
+            display: none
+
+.js-validate-error-label
+    padding-top: 5px

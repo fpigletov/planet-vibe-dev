@@ -1,0 +1,353 @@
+.header
+    position: fixed
+    width: 100%
+    left: 0
+    top: 0
+    z-index: 500
+    transition: background-color 0.3s ease 0s
+    &.active
+        background-color: rgba(255, 255, 255, 0.8)
+        box-shadow: $box-shadow
+        @media (any-hover: hover)
+            &:hover
+                background-color: $white-color
+                transition: background-color 0.3s ease 0s
+
+    &__container
+        height: 100%
+        width: 100%
+
+    &__body
+        display: flex
+        align-items: center
+        justify-content: space-between
+        min-height: 70px
+
+    &__logo
+        font-size: 25px
+        color: $dark-color
+        font-weight: 900
+        flex: 0 0 180px
+        margin-right: 20px
+        &:before
+            display: inline
+            color: $green-color
+            padding-right: 5px
+
+    &__main
+        display: flex
+        align-items: center
+
+    &__navbar
+        @media (max-width: $md2)
+            position: fixed
+            top: 0
+            left: 0
+            transform: translateX(-100%)
+            width: 60%
+            height: 100vh
+            z-index: 1000
+            display: flex
+            align-items: center
+            justify-content: center
+            overflow-y: auto
+            overflow-x: hidden
+            background-color: $white-color
+            padding: 40px 20px
+            opacity: 0
+            visibility: hidden
+            transition: transform 0.5s ease, box-shadow 0.8s ease, opacity 0.5s ease, visibility 0.5s ease
+            &.active
+                opacity: 1
+                visibility: visible
+                transform: translateX(-10%)
+                box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.8)
+                transition: transform 0.5s ease, opacity 0.5s ease, visibility 0.5s ease, box-shadow 1.2s ease
+        @media (max-width: $md3)
+            width: 60%
+        @media (max-width: $md4)
+            width: 85%
+            flex-direction: column
+
+    &__menu
+        display: flex
+        align-items: center
+        flex-wrap: wrap
+        @media (max-width: $md2)
+            flex-wrap: nowrap
+            flex-direction: column
+        @media (max-width: $md4)
+            margin-bottom: 40px
+
+    &__item
+        margin: 10px 0
+        &:not(:last-child)
+            margin-right: 25px
+        @media (max-width: $md2)
+            margin: 0
+            &:not(:last-child)
+                margin: 0 0 40px 0
+        @media (max-width: $md4)
+            margin: 0
+            &:not(:last-child)
+                margin: 0 0 25px 0
+
+    &__link
+        font-size: 18px
+        font-weight: 700
+        transition: color 0.3s ease 0s
+        @media (any-hover: hover)
+            &:hover
+                color: $green-color
+        @media (max-width: $md2)
+            font-size: 42px
+        @media (max-width: $md3)
+            font-size: 36px
+        @media (max-width: $md4)
+            font-size: 26px
+
+    &__actions
+        display: flex
+        align-items: center
+        flex-wrap: nowrap
+
+    &__user,
+    &__search,
+    .cart-header__btn
+        transition: color 0.3s ease 0s
+        @media (any-hover: hover)
+            &:hover
+                color: $green-color
+                span
+                    background-color: $green-hover-color
+
+    &__user
+        font-size: 20px
+        margin-right: 20px
+        @media (max-width: $md4)
+            margin-right: 40px
+
+    &__cart
+        position: relative
+        margin-right: 20px
+        &.active
+            @media (any-hover: hover)
+                &:hover
+                    .cart-header__content
+                        opacity: 1
+                        visibility: visible
+                        transition: opacity 0.3s ease, visibility 0.3s ease
+        @media (max-width: $md4)
+            margin-right: 25px
+
+    &__search
+        font-size: 20px
+        @media (max-width: $md2)
+            margin-right: 20px
+        @media (max-width: $md4)
+            margin-right: 0
+
+    &__icons
+        display: none
+        @media (max-width: $md4)
+            display: flex
+            align-items: center
+
+    &__burger
+        display: none
+        @media (max-width: $md2)
+            display: block
+            position: relative
+            width: 30px
+            height: 16px
+            cursor: pointer
+            z-index: 1001
+            transition: all 0.3s ease 0s
+            @media (any-hover: hover)
+                &:hover
+                    span
+                        background-color: $green-color
+
+            span
+                position: absolute
+                height: 2px
+                width: 100%
+                background-color: $dark-color
+                transition: all 0.3s ease 0s
+                left: 0
+                &:nth-child(1)
+                    top: 0
+                &:nth-child(2)
+                    top: 7px
+                &:nth-child(3)
+                    bottom: 0
+
+        &.active
+            span
+                transition: all 0.3s ease 0s
+                background-color: $white-color
+                &:nth-child(1)
+                    top: 7px
+                    transform: rotate(-45deg)
+                &:nth-child(2)
+                    transform: scale(0)
+                &:nth-child(3)
+                    bottom: 7px
+                    transform: rotate(45deg)
+            @media (any-hover: hover)
+                &:hover
+                    span
+                        transition: all 0.3s ease 0s
+                        background-color: $green-color
+
+.cart-header
+
+    &__btn
+        position: relative
+        font-size: 23px
+        span
+            display: none
+            align-items: center
+            justify-content: center
+            position: absolute
+            top: -12px
+            right: -12px
+            width: 22px
+            height: 22px
+            border-radius: 100%
+            background-color: $green-color
+            color: $white-color
+            font-size: 14px
+            font-weight: 600
+            transition: background-color 0.3s ease 0s
+            &.active
+                display: inline-flex
+
+    &__content
+        opacity: 0
+        visibility: hidden
+        position: absolute
+        right: -40px
+        top: 220%
+        width: 345px
+        max-height: 250px
+        padding: 10px
+        background-color: $white-color
+        transition: opacity 0.3s ease, visibility 0.3s ease
+
+.cart-content
+    box-shadow: 0 0 10px 10px rgba(16, 34, 27, 0.6)
+    border-radius: 20px
+
+    .simplebar-offset
+        padding: 10px 0
+
+    &__wrapper
+        overflow: auto
+        max-height: 180px
+
+    &__item
+        display: flex
+        align-items: center
+        padding-right: 20px
+        transition: background-color 0.3s ease 0s
+        background-color: $white-color
+        &:not(:last-child)
+            margin-bottom: 5px
+        @media (any-hover: hover)
+            &:hover
+                background-color: $light-color
+
+    &__image
+        flex: 0 1 80px
+        height: 80px
+        margin-right: 10px
+        img
+            height: 100%
+            width: 100%
+            object-fit: cover
+
+    &__info
+        flex: 0 1 160px
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        padding: 10px
+
+    &__title
+        text-transform: uppercase
+        color: $green-color
+        margin-bottom: 5px
+        span
+            display: block
+            font-size: 12px
+            font-weight: 900
+
+    &__price
+        font-size: 14px
+        font-weight: 900
+        text-transform: uppercase
+        display: flex
+        align-items: flex-end
+        flex-direction: row-reverse
+        color: $dark-color
+
+    &__quantity
+        display: flex
+        justify-content: center
+        align-items: center
+        margin-right: 45px
+        width: 20px
+        height: 20px
+        border: 1px solid $dark-color
+        background-color: $white-color
+        color: $dark-color
+        font-size: 12px
+        font-weight: 600
+
+    &__remove
+        font-size: 18px
+        transition: transform 0.3s ease 0s
+        color: $dark-color
+        @media (any-hover: hover)
+            &:hover
+                transform: scale(1.2)
+
+    &__footer
+        padding: 10px
+        display: flex
+        align-items: flex-end
+        justify-content: space-between
+
+    &__total
+        color: $green-color
+        font-weight: 600
+        font-size: 20px
+        span
+            padding-left: 5px
+            color: $dark-color
+            font-weight: 700
+            font-size: 18px
+
+    &__btn
+        height: 40px
+        padding: 0 20px
+
+//Simplebar
+.simplebar-track.simplebar-vertical
+    width: 10px
+
+.header-item-active
+    animation-name: header-item
+    animation-delay: 0s
+
+@keyframes header-item
+    0%
+        transform: translateY(300%)
+        opacity: 0
+        visibility: hidden
+
+    100%
+        transform: translateY(0)
+        opacity: 1
+        visibility: visible

@@ -1,0 +1,81 @@
+.packages
+    background: $light-color
+
+    &__title
+        text-align: center
+        margin-bottom: 40px
+        @media (max-width: $md4)
+            margin-bottom: 25px
+
+    &__wrapper
+        @include grid(320px)
+        @media (max-width: $md3)
+            @include grid(280px)
+
+    &__item
+        display: flex
+        align-items: center
+        flex-direction: column
+        padding: 20px
+        background: $white-color
+        border: $border
+        box-shadow: $box-shadow
+        border-radius: 20px
+        transition: all 0.3s ease 0s
+        @media (any-hover: hover)
+            &:hover
+                background: $dark-color
+                .item-packages__content
+                    color: $white-color
+                .item-packages__btn
+                    border-color: $white-color
+                    color: $white-color
+                    &:hover
+                        background-color: $white-color
+                        color: $dark-color
+
+.item-packages
+
+    &__image
+        height: 250px
+        width: 100%
+        overflow: hidden
+        margin-bottom: 20px
+        border-top-left-radius: 20px
+        border-top-right-radius: 20px
+        img
+            border-top-left-radius: 20px
+            border-top-right-radius: 20px
+
+    &__content
+        text-align: center
+        flex: 1 1 auto
+        display: flex
+        flex-direction: column
+        align-items: center
+
+    &__title
+        color: $green-color
+        font-size: 20px
+        margin-bottom: 10px
+        transition: all 0.3s ease 0s
+
+    &__descr
+        flex: 1 1 auto
+        line-height: 140%
+        margin-bottom: 10px
+        transition: all 0.3s ease 0s
+
+    &__price
+        font-size: 20px
+        color: $green-color
+        margin-bottom: 10px
+        transition: all 0.3s ease 0s
+
+    &__btn
+        flex: 0 0 45px
+        width: 190px
+        padding: 0 30px
+
+    &__hidden
+        display: none

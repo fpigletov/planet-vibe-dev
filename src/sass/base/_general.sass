@@ -1,0 +1,187 @@
+*
+	padding: 0
+	margin: 0
+	border: 0
+
+*,
+*::before,
+*::after
+	box-sizing: border-box
+
+a
+	color: inherit
+
+aside,
+nav,
+footer,
+header,
+section
+	display: block
+
+html,
+body
+	height: 100%
+	min-width: $min-width
+
+body
+	line-height: 1
+	font-family: $font-family
+	color: $dark-color
+	font-weight: 500
+	font-style: normal
+
+input,
+a,
+button
+	outline: none
+
+a,
+button
+	&:focus-visible
+		outline: 3px solid $green-color
+		outline-offset: 4px
+
+input,
+button,
+textarea
+	font-size: inherit
+	font-family: $font-family
+
+button
+	cursor: pointer
+	background-color: transparent
+
+a,
+a:visited
+	text-decoration: none
+
+a:hover
+	text-decoration: none
+
+ul li
+	list-style: none
+
+img
+	height: 100%
+	width: 100%
+	object-fit: cover
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+	font-weight: inherit
+	font-size: inherit
+
+.wrapper
+	width: 100%
+	min-height: 100%
+	display: flex
+	flex-direction: column
+
+.main
+	flex: 1 1 auto
+
+	&__adventures,
+	&__about,
+	&__products,
+	&__packages,
+	&__reviews,
+	&__subscribe,
+	&__blog
+		overflow: hidden
+		padding: 40px 0
+		@media (max-width: $md4)
+			padding: 25px 0
+
+.container
+	max-width: $max-width-container
+	padding: 0 15px
+	margin: 0 auto
+	@media (max-width: $md3)
+		padding: 0 10px
+
+.btn
+	display: inline-flex
+	align-items: center
+	justify-content: center
+	color: $dark-color
+	border: $border
+	font-size: 18px
+	transition: all 0.3s ease 0s
+	font-weight: 700
+	border-radius: 20px
+	@media (any-hover: hover)
+		&:hover
+			background-color: $dark-color
+			color: $white-color
+
+	&.hold
+		opacity: 0.2
+		cursor: default
+
+.title
+	text-transform: uppercase
+	font-weight: 700
+	font-size: 36px
+	@media (max-width: $md4)
+		font-size: 28px
+
+//Swiper
+
+.slider-arrows
+	width: 100%
+	display: flex
+	justify-content: space-between
+	position: absolute
+	top: 50%
+	left: 0
+	z-index: 10
+	transform: translateY(-50%)
+	@media (max-width: $md3)
+		display: none
+
+.slider-arrow
+	font-size: 30px
+	transition: transform 0.3s ease 0s
+	@media (any-hover: hover)
+		&:hover
+			transform: scale(1.2)
+
+//Checkbox
+.checkbox
+	appearance: none
+	&:checked + .checkbox-tag::after
+		transform: scale(1)
+
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button
+		-webkit-appearance: none
+		margin: 0
+
+.checkbox-tag
+	position: relative
+	display: inline-block
+	&::before
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 15px
+		height: 15px
+		border: 2px solid $green-color
+	&::after
+		transition: all 0.3 ease 0s
+		position: absolute
+		content: ''
+		top: 3px
+		left: 3px
+		width: 9px
+		height: 9px
+		background-color: $green-color
+		transform: scale(0)
+
+.overflow-active
+	overflow: hidden

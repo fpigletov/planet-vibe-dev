@@ -1,0 +1,51 @@
+.about
+    background: $light-color
+
+    &__container
+        display: flex
+        align-items: center
+        overflow: hidden
+        @media (max-width: 600px)
+            flex-direction: column
+
+    &__image
+        flex: 0 1 50%
+        padding: 0 40px 40px 0
+        margin-right: 70px
+        img
+            box-shadow: 40px 40px 0 rgba(0, 0, 0, 0.1)
+        @media (max-width: $md2)
+            margin-right: 50px
+        @media (max-width: 600px)
+            width: 100%
+            flex: 0 1 100%
+            padding: 0
+            margin: 0 0 40px 0
+            img
+                box-shadow: 20px 20px 0 rgba(0, 0, 0, 0.1)
+        @media (max-width: 600px)
+            img
+                box-shadow: none
+
+    &__content
+        flex: 0 1 50%
+        @media (max-width: 600px)
+            width: 100%
+            flex: 0 1 100%
+
+    &__title
+        font-weight: 700
+        font-size: 28px
+        line-height: 110%
+        color: $green-color
+        margin-bottom: 15px
+        @media (max-width: $md3)
+            font-size: 24px
+
+    &__text
+        line-height: 140%
+        margin-bottom: 10px
+
+    &__btn
+        height: 45px
+        padding: 0 20px

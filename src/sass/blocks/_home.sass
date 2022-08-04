@@ -1,0 +1,186 @@
+.home
+    height: 300vh
+    background-color: $light-color
+
+    &__start
+        display: flex
+        align-items: center
+        justify-content: center
+        flex-direction: column
+        height: 100vh
+
+    &__container
+        position: sticky
+        top: 0
+        display: flex
+        justify-content: center
+        align-items: center
+        overflow: hidden
+        width: 100%
+        height: 100vh
+
+    &__content
+        position: relative
+        overflow: hidden
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 100px
+        height: 100px
+        border-radius: 100%
+
+    &__slider
+        position: relative
+        width: 100vw
+        height: 100vh
+
+.start-home
+
+    &__title
+        display: flex
+        align-items: flex-end
+        justify-content: center
+        width: 100%
+        margin-bottom: 10px
+        h1
+            font-size: 80px
+            font-weight: 900
+            @media (max-width: $md3)
+                font-size: 60px
+            @media (max-width: $md4)
+                font-size: 40px
+
+    &__icon
+        flex: 0 0 75px
+        height: 110px
+        margin-right: 10px
+        path
+            stroke: $green-color
+            fill: $green-color
+            stroke-dasharray: 1800
+            opacity: 1
+            animation: svgAnimation 3s cubic-bezier(.8,.4,.46,.76)
+        @media (max-width: $md3)
+            flex: 0 0 54px
+            height: 80px
+        @media (max-width: $md4)
+            flex: 0 0 38px
+            height: 55px
+
+        @keyframes svgAnimation
+            0%
+                opacity: 0
+                fill: none
+                stroke-dashoffset: 1800
+
+            30%
+                opacity: 1
+                fill: none
+                stroke-dashoffset: 1800
+
+            90%
+                fill: rgba(33, 145, 80, 0)
+
+            100%
+                opacity: 1
+                fill: rgba(33, 145, 80, 1)
+                stroke-dasharray: 0
+
+    &__subtitle
+        font-size: 32px
+        font-weight: 500
+        @media (max-width: $md3)
+            font-size: 26px
+        @media (max-width: $md4)
+            font-size: 22px
+
+.slider-home
+
+    &__body
+        height: 100%
+        width: 100%
+
+    &__slide
+
+        &_1
+            background: url('../img/home/01.jpg') center/cover no-repeat
+            .slider-home__container
+                justify-content: flex-end
+            @media (max-width: $md2)
+                background: url('../img/home/04.jpg') center/cover no-repeat
+                .slider-home__container
+                    justify-content: center
+
+        &_2
+            background: url('../img/home/02.jpg') center/cover no-repeat
+            @media (max-width: $md2)
+                background: url('../img/home/05.jpg') center/cover no-repeat
+
+        &_3
+            background: url('../img/home/03.jpg') center/cover no-repeat
+            .slider-home__container
+                justify-content: center
+            @media (max-width: $md2)
+                background: url('../img/home/06.jpg') center/cover no-repeat
+
+    &__container
+        height: 100%
+        width: 100%
+        display: flex
+        align-items: center
+        @media (max-width: $md2)
+            justify-content: center
+
+    &__content
+        padding: 0 50px 0 100px
+        max-width: 600px
+        @media (max-width: $md2)
+            padding: 0 30px
+            max-width: 500px
+            text-align: center
+
+    &__overhead
+        font-size: 40px
+        font-weight: 500
+        margin-bottom: 5px
+        @media (max-width: $md3)
+            margin-bottom: 0
+            font-size: 36px
+        @media (max-width: $md4)
+            font-size: 26px
+
+    &__title
+        font-size: 60px
+        font-weight: 700
+        color: $green-color
+        text-transform: uppercase
+        margin-bottom: 15px
+        @media (max-width: $md3)
+            font-size: 52px
+        @media (max-width: $md4)
+            font-size: 44px
+
+    &__descr
+        line-height: 150%
+        margin-bottom: 20px
+        @media (max-width: $md4)
+            line-height: 130%
+            font-size: 16px
+            margin-bottom: 15px
+
+    &__btn
+        height: 50px
+        padding: 0 25px
+        font-weight: 700
+        @media (max-width: $md4)
+            height: 45px
+            padding: 0 20px
+
+    &__arrows
+        padding: 0 30px
+
+@keyframes scroll
+    0%
+        transform: translateY(-50%)
+    100%
+        transform: translateY(50%)
