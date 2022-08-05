@@ -1,9 +1,6 @@
 'use strict';
 
 import { homeSlider } from './components/sliders';
-import { productsSlider } from './components/sliders';
-import { reviewsSlider } from './components/sliders';
-import { blogSlider } from './components/sliders';
 import { checkoutLogic } from './components/checkout';
 import { uploadFromDB } from './components/upload';
 import { modal } from './components/modules';
@@ -259,15 +256,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     //Home Slider
     homeSlider();
-
-    //Products Slider
-    productsSlider();
-
-    //Reviews Slider
-    reviewsSlider();
-
-    //Blog Slider
-    blogSlider();
 
     //Load from DB
     uploadFromDB();

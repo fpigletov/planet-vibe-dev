@@ -29,7 +29,7 @@ export function uploadFromDB() {
                                 </picture>
                             </div>
                             <div class="item-adventures__content">
-                                <a href="#" class="item-adventures__title open-adventures-btn">${advItem.title}</a>
+                                <button type="button" class="item-adventures__title open-adventures-btn">${advItem.title}</button>
                                 <p class="item-adventures__descr">${advItem.descr}</p>
                                 <button type="button" class="item-adventures__btn btn open-adventures-btn">Read more</button>
                             </div>
@@ -87,6 +87,37 @@ export function uploadFromDB() {
                     `;
                 }
                 ScrollTrigger.refresh();
+            })
+            .then(() => {
+                new Swiper('.products__slider', {  
+                    loop: true,
+                    grabCursor: true,
+                    spaceBetween: 20,  
+                    speed: 800,
+                    watchSlidesProgress: true,
+                    navigation: {
+                        nextEl: '.products__arrow_next',
+                        prevEl: '.products__arrow_prev',
+                    },  
+                    keyboard: {
+                        enabled: true,
+                        onlyInViewport: true
+                    },
+                    breakpoints: {
+                        0: {
+                            slidesPerView: 1.2,
+                        },
+                        480: {
+                            slidesPerView: 2.2,
+                        },
+                        768: {
+                            slidesPerView: 3,
+                        },
+                        1200: {
+                            slidesPerView: 4,
+                        },
+                    },
+                });
             })
             .catch(err => alert(err));
     }
@@ -168,6 +199,28 @@ export function uploadFromDB() {
 
                 ScrollTrigger.refresh();
             })
+            .then(() => {
+                new Swiper('.reviews__slider', {  
+                    loop: true, 
+                    grabCursor: true,
+                    spaceBetween: 20,
+                    keyboard: {
+                        enabled: true,
+                        onlyInViewport: true
+                    },
+                    breakpoints: {
+                        0: {
+                        slidesPerView: 1.2,
+                        },
+                        520: {
+                        slidesPerView: 2.2,
+                        },
+                        992: {
+                        slidesPerView: 3,
+                        },
+                    },
+                });
+            })
             .catch(err => alert(err));
     }
 
@@ -208,6 +261,29 @@ export function uploadFromDB() {
                 }
 
                 ScrollTrigger.refresh();
+            })
+            .then(() => {
+                new Swiper('.blog__slider', {
+                    loop: true,
+                    grabCursor: true,
+                    spaceBetween: 30,
+                    watchSlidesProgress: true,
+                    keyboard: {
+                        enabled: true,
+                        onlyInViewport: true
+                    },
+                    breakpoints: {
+                        0: {
+                            slidesPerView: 1.2,
+                        },
+                        576: {
+                            slidesPerView: 2.2,
+                        },
+                        992: {
+                            slidesPerView: 3,
+                        }
+                    }
+                });
             })
             .catch(err => alert(err));
     }

@@ -20,8 +20,12 @@
         line-height: 140%
         font-size: 20px
         color: $white-color
-        span
+        a
             color: $green-color
+            transition: color 0.3s ease
+            @media (any-hover: hover)
+                &:hover
+                    color: $green-hover-color
 
 .column-footer
 
@@ -38,7 +42,7 @@
             margin-bottom: 0
 
     &__link
-        display: flex
+        display: inline-flex
         align-items: center
         font-size: 14px
         color: $white-color
