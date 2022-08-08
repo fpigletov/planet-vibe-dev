@@ -352,10 +352,11 @@
         color: $dark-color
         font-size: 14px
         font-weight: 600
-        transition: border-color 0.3s ease
+        border-bottom: 2px solid transparent
         &.is-highlighted
             background-color: $light-color
-            border-bottom: 2px solid $green-color
+            border-color: $green-color
+            transition: border-color 0.3s ease, background-color 0.3s ease
 
     .choices__list--dropdown .choices__item--selectable.is-highlighted::after
         display: none
@@ -386,7 +387,7 @@
             resize: vertical
             min-height: 80px
 
-    &__checkbox:focus + .form-modal__tag
+    &__checkbox:focus-visible + .form-modal__tag
         padding-bottom: 5px
         border-bottom: 2px solid $green-color
 

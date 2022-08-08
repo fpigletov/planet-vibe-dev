@@ -3,8 +3,8 @@
 import { homeSlider } from './components/sliders';
 import { checkoutLogic } from './components/checkout';
 import { uploadFromDB } from './components/upload';
-import { modal } from './components/modules';
-import { loadingModals } from './components/modules';
+import { modal } from './components/modals';
+import { loadingModals } from './components/modals';
 import { searchLogic } from './components/search';
 import { blocksAnimation } from './components/animation';
 

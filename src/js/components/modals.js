@@ -16,9 +16,9 @@ export function modal(triggerElement, contentSelector) {
             modal.classList.add('active');
             modalContent.classList.add('active');
             modalContent.scrollTop = 0;
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden';            
             lastFocusedEl = document.activeElement;
-        
+
             Array.from(document.body.children).forEach(item => {
                 if (item !== modal) {
                     item.inert = true;
@@ -31,9 +31,7 @@ export function modal(triggerElement, contentSelector) {
             } else {
                 document.body.style.paddingRight = scrollWidth;
                 header.style.paddingRight = scrollWidth;
-            }    
-            
-            console.log(lastFocusedEl);
+            }
         };
 
         const closeModal = () => { 
@@ -52,8 +50,7 @@ export function modal(triggerElement, contentSelector) {
                 if (item !== modal) {
                     item.inert = false;
                 }
-            });  
-            console.log(lastFocusedEl);
+            });
         };
 
         document.addEventListener('click', (e) => {
@@ -65,7 +62,8 @@ export function modal(triggerElement, contentSelector) {
                 openModal();
             }
 
-            if (e.target === modal && modal.classList.contains('active') && modalContent.classList.contains('active')) {
+            if (e.target === modal && modal.classList.contains('active') &&
+                modalContent.classList.contains('active')) {
                 closeModal();
                 lastFocusedEl.focus();
             }
