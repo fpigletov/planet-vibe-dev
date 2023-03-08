@@ -131,6 +131,8 @@ export function uploadFromDB() {
         fetch('https://fpigletov-db.herokuapp.com/planet-vibe/')
             .then(response => response.json())
             .then((data) => {
+
+                console.log(data);
                 
                 packagesBody.innerHTML = '';
 
@@ -168,7 +170,7 @@ export function uploadFromDB() {
 
     //Reviews
     function loadingReviews() {
-        fetch('https://fpigletov-db.herokuapp.com/planet-vibe/')
+        fetch('https://database.fpigletov.ru/data.json/planet-vide/')
             .then(response => response.json())
             .then((data) => {
                 
@@ -230,7 +232,7 @@ export function uploadFromDB() {
 
     //Blog
     function loadingBlog() {
-        fetch('https://fpigletov-db.herokuapp.com/planet-vibe/')
+        fetch('https://database.fpigletov.ru/db.json/planet-vibe/')
             .then(response => response.json())
             .then((data) => {
                 

@@ -30,30 +30,33 @@ export function searchLogic() {
             resultsBody.innerHTML = '<ul class="search-results__body"></ul>';
             const results = document.querySelector('.search-results__body');
 
-            fetch('https://fpigletov-db.herokuapp.com/planet-vibe/')
-                .then(response => response.json())
-                .then((data) => {
-                    const searchResults = data.products;
-                    const filteredResults = searchResults.filter(item => item.title.toLowerCase().includes(text.toLowerCase()));
+            
+            const searchResults = document.querySelectorAll('.item-products__title');
+            let filteredResults = [];
+            searchResults.forEach(item => {
+                
+                if (item.textContent.toLowerCase().includes(text.toLowerCase())) {
+                    filteredResults.push(item.textContent);
+                }
+            });  
 
-                    if (filteredResults.length > 0) {
+            if (filteredResults.length > 0) {
 
-                        filteredResults.forEach(item => {
+                filteredResults.forEach(item => {
 
-                            results.innerHTML += `
-                                <li class="search-results__item">
-                                    <a href="#" class="search-results__link products-link">${item.title}</a>
-                                </li>
-                            `;
-                        });
+                    results.innerHTML += `
+                        <li class="search-results__item">
+                            <a href="#" class="search-results__link products-link">${item}</a>
+                        </li>
+                    `;
+                });
 
-                    } else {
+            } else {
 
-                        falseResult();
-                        
-                    }
-                })
-                .catch(err => alert(err));
+                falseResult();
+                
+            }
+                
         }        
     }
 }

@@ -1,8 +1,11 @@
 'use strict';
 
 import { homeSlider } from './components/sliders';
+import { productSlider } from './components/sliders';
+import { reviewSlider } from './components/sliders';
+import { blogSlider } from './components/sliders';
 import { checkoutLogic } from './components/checkout';
-import { uploadFromDB } from './components/upload';
+// import { uploadFromDB } from './components/upload';
 import { modal } from './components/modals';
 import { loadingModals } from './components/modals';
 import { searchLogic } from './components/search';
@@ -257,8 +260,17 @@ window.addEventListener('DOMContentLoaded', () => {
     //Home Slider
     homeSlider();
 
+    //Product Slider
+    productSlider();
+
+    //Review Slider
+    reviewSlider();
+
+    //Blog Slider
+    blogSlider();
+
     //Load from DB
-    uploadFromDB();
+    // uploadFromDB();
 
     //Checkout
     checkoutLogic();

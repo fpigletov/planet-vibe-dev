@@ -90,7 +90,7 @@ export function checkoutLogic() {
                 </div>
                 <div class="cart-content__info">
                     <h4 class="cart-content__title">${title}</h4>
-                    <span class="cart-content__price">$${price}</span>
+                    <span class="cart-content__price">${price}</span>
                 </div>
                 <div class="cart-content__quantity"><span>1</span></div>
                 <button type="button" class="cart-content__remove icon-trash" aria-label="Remove product"></button>
@@ -100,51 +100,55 @@ export function checkoutLogic() {
 
     // Add Product to Cart
     function addToCart(currentBtn, id, productAdd = true) {
-    
-        fetch('https://fpigletov-db.herokuapp.com/planet-vibe/')
-            .then(response => response.json())
-            .then((data) => {
-                const item = data.products[id];
-                
-                const cartProduct = document.querySelector(`[data-cart-id="${id}"]`);             
+        
+       
+        const item = document.querySelector(`[data-prod-id="${id}"]`); 
+        const productImageWebp = item.querySelector('.item-products__image source').getAttribute('srcset');
+        const productImageJpg = item.querySelector('.item-products__image img').getAttribute('src');
+        const productImageAlt = item.querySelector('.item-products__image img').getAttribute('alt');
+        const productTitle = item.querySelector('.item-products__title').textContent;
+        const productPrice = item.querySelector('.item-products__price').textContent;
+        const productPriceAmount = +productPrice.slice(1);
+        
+        const cartProduct = document.querySelector(`[data-cart-id="${id}"]`); 
+        
 
-                if (productAdd) {
-                    if (!cartProduct) {
+        if (productAdd) {
+            if (!cartProduct) {
 
-                        cartList.insertAdjacentHTML('beforeend', generateCartItem(item.mainImageJpg, item.mainImageWebp, item.mainImageAlt, item.title, item.price, item.id));
+                cartList.insertAdjacentHTML('beforeend', generateCartItem(productImageJpg, productImageWebp, productImageAlt, productTitle, productPrice, id));
 
-                    } else {
-                        const cartProductQuantity = cartProduct.querySelector('.cart-content__quantity span');
-                        const cartProductPrice = cartProduct.querySelector('.cart-content__price');
+            } else {
+                const cartProductQuantity = cartProduct.querySelector('.cart-content__quantity span');
+                const cartProductPrice = cartProduct.querySelector('.cart-content__price');
 
-                        cartProductQuantity.textContent = ++cartProductQuantity.textContent;
-                        cartProductPrice.textContent = '$' + (+cartProductQuantity.textContent * item.price);
-                    }
+                cartProductQuantity.textContent = ++cartProductQuantity.textContent;
+                cartProductPrice.textContent = '$' + (+cartProductQuantity.textContent * productPriceAmount);
+            }
 
-                    //Unhold Button
-                    currentBtn.classList.remove('hold');
-                } else {    //Remove Product
-                    const cartProductQuantity = cartProduct.querySelector('.cart-content__quantity span');
-                    const cartProductPrice = cartProduct.querySelector('.cart-content__price');
-                    cartProductQuantity.textContent = --cartProductQuantity.textContent;
+            //Unhold Button
+            currentBtn.classList.remove('hold');
+        } else {    //Remove Product
+            const cartProductQuantity = cartProduct.querySelector('.cart-content__quantity span');
+            const cartProductPrice = cartProduct.querySelector('.cart-content__price');
+            cartProductQuantity.textContent = --cartProductQuantity.textContent;
 
-                    //Total Product Price
-                    cartProductPrice.textContent = '$' + (+cartProductQuantity.textContent * +item.price);
-                    
-                    cartQuantity.textContent = --cartQuantity.textContent;
-
-                    //Remove Cart Product
-                    if (!parseInt(cartProductQuantity.textContent)) {
-                        cartProduct.remove();
-                    }
-                }
-                countCartTotal();
-                showCartQuantity();
-                showCart();        
+            //Total Product Price
+            cartProductPrice.textContent = '$' + (+cartProductQuantity.textContent * +productPriceAmount);
             
-                updateStorage(); 
-            })
-            .catch(err => alert(err));
+            cartQuantity.textContent = --cartQuantity.textContent;
+
+            //Remove Cart Product
+            if (!parseInt(cartProductQuantity.textContent)) {
+                cartProduct.remove();
+            }
+        }
+        countCartTotal();
+        showCartQuantity();
+        showCart();        
+    
+        updateStorage(); 
+            
     }
 
     //Triggers
@@ -210,7 +214,7 @@ export function checkoutLogic() {
                                     <h4 class="item-checkout__title">${title}</h4>
                                     <div class="item-checkout__footer">
                                         <div class="item-checkout__price">
-                                            $${price}
+                                            ${price}
                                         </div>
                                         <div class="item-checkout__quantity"><span>${quantity}</span></div>
                                     </div>
@@ -251,19 +255,24 @@ export function checkoutLogic() {
                 const checkoutTotalPrice = checkout.querySelector('.order-checkout__total span');
                 const checkoutProductsBody = checkout.querySelector('.order-checkout__items');
 
-                cartProduct.forEach(item => {
-                    const cartId = item.dataset.cartId;
 
-                    fetch('https://fpigletov-db.herokuapp.com/planet-vibe/')
-                        .then(response => response.json())
-                        .then((data) => {
-                            const product = data.products[cartId];
-                            const cartTotalPrice = item.querySelector('.cart-content__price').textContent;   
-                            const cartQuantity = item.querySelector('.cart-content__quantity span').textContent;
+                
+
+                cartProduct.forEach(item => {
+                    const cartId = item.dataset.cartId;  
+                    const cartProductImgJpg = item.querySelector('.cart-content__image img').getAttribute('src');
+                    const cartProductImgAlt = item.querySelector('.cart-content__image img').getAttribute('alt');
+                    const cartProductTitle = item.querySelector('.cart-content__title').textContent;
+                    
+                    
+              
+                    const cartTotalPrice = item.querySelector('.cart-content__price').textContent;   
+                    const cartQuantity = item.querySelector('.cart-content__quantity span').textContent;
+                    const cartProductPrice = '$' + (+cartTotalPrice.slice(1) / cartQuantity);                   
+                    
+                
+                    checkoutProductsBody.insertAdjacentHTML('beforeend', generateCheckoutItem(cartProductImgJpg, cartProductImgAlt, cartProductTitle, cartQuantity, cartProductPrice, cartTotalPrice, cartId));
                         
-                            checkoutProductsBody.insertAdjacentHTML('beforeend', generateCheckoutItem(product.mainImageJpg, product.mainImageAlt, product.title, cartQuantity, product.price, cartTotalPrice, cartId));
-                        })
-                        .catch(err => alert(err));
                 });                
                 checkoutTotalPrice.textContent = cartTotalPrice.textContent;
             }
@@ -350,7 +359,7 @@ export function checkoutLogic() {
         modalMessage.textContent = statusMessage.loading;
 
         let result = await fetch(url, {
-            method: 'POST',
+            method: 'POST', 
             body: data
         });
         

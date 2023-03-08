@@ -100,7 +100,7 @@ export function loadingModals() {
     const contentModal = document.querySelector('.modal__content');
 
     //Open Product Modal
-    function openProductModal(id, imageJpg, imageWebp, alt, title, descr, spec, stars, price) {
+    function openProductModal(id, imageJpg, imageWebp, alt, title, descr, key, value, stars, price) {
         const productImage = document.querySelector('.product-modal__image');
         const productStars = document.querySelector('.product-modal__stars');        
         const columnLeft = document.querySelector('.product-modal__column_left');        
@@ -118,37 +118,39 @@ export function loadingModals() {
         `;
         
         document.querySelector('.product-modal__title').textContent = title;
-        document.querySelector('.product-modal__price').textContent = '$' + price;
+        document.querySelector('.product-modal__price').textContent = price;
 
         productStars.innerHTML = '';
         
-        for (let i = 0; i < Object.values(stars).length; i++) {
-
+        for (let i = 0; i < stars.length; i++) {            
             productStars.innerHTML += `
-                <span class="${Object.values(stars)[i]}"></span>
+                <span class="${stars[i].className}"></span>
             `;
         }
 
         columnLeft.innerHTML = '';
         columnRight.innerHTML = '';
+        
 
-        for (let j = 0; j < Object.values(spec).length; j++) {
-
+        for (let j = 0; j < key.length; j++) {
+            
             columnLeft.innerHTML += `
-                <span>${Object.keys(spec)[j]}:</span>
-            `;
+                <span>${key[j].textContent}</span>
+            `;            
+        }
 
+        for (let l = 0; l < value.length; l++) {    
             columnRight.innerHTML += `
-                <span>${Object.values(spec)[j]}</span>
+                <span>${value[l].textContent}</span>
             `;
         }
         
         productDescr.innerHTML = '';
         
-        for (let k = 0; k < Object.values(descr).length; k++) {
+        for (let k = 0; k < descr.length; k++) {
 
             productDescr.innerHTML += `
-                <p>${Object.values(descr)[k]}</p>
+                <p>${descr[k].textContent}</p>
             `;
 
         }
@@ -188,56 +190,60 @@ export function loadingModals() {
             e.preventDefault();            
             
             const itemId = e.target.closest('.item-adventures').dataset.advId;
+            const item = document.querySelector(`[data-adv-id="${itemId}"]`);  
+            const itemImgJpg = item.querySelector('.item-adventures__image img').getAttribute('src');
+            const itemImgWebp = item.querySelector('.item-adventures__image source').getAttribute('srcset');
+            const itemImageAlt = item.querySelector('.item-adventures__image img').getAttribute('alt');
 
-            fetch('https://fpigletov-db.herokuapp.com/planet-vibe/')
-                .then(response => response.json())
-                .then((data) => {
-                    const item = data.adventures[itemId];
-                    openContentModal(item.mainImageJpg, item.mainImageWebp, item.mainImageAlt, item.title, item.text);  
-                })
-                .catch(err => alert(err));
+            const itemTitle = item.querySelector('.item-adventures__title').textContent;
+            const itemText = item.querySelector('.item-adventures__text').textContent;
+            
+            openContentModal(itemImgJpg, itemImgWebp, itemImageAlt, itemTitle, itemText);  
+                
         }
 
         //Packages Modal
         if (target.classList.contains('item-packages__btn')) {            
             e.preventDefault();            
             const itemId = e.target.closest('.item-packages').dataset.packId;
-
-            fetch('https://fpigletov-db.herokuapp.com/planet-vibe/')
-                .then(response => response.json())
-                .then((data) => {
-                    const item = data.packages[itemId];
-                    const price = '$' + item.price;
-                    openContentModal(item.mainImageJpg, item.mainImageWebp, item.mainImageAlt, item.title, item.text, price);
-                })
-                .catch(err => alert(err));
+            const item = document.querySelector(`[data-pack-id="${itemId}"]`);  
+            const itemImgJpg = item.querySelector('.item-packages__image img').getAttribute('src');
+            const itemImgWebp = item.querySelector('.item-packages__image source').getAttribute('srcset');
+            const itemImageAlt = item.querySelector('.item-packages__image img').getAttribute('alt');
+            const itemTitle = item.querySelector('.item-packages__title').textContent;
+            const itemText = item.querySelector('.item-packages__text').textContent;
+            const itemPrice = item.querySelector('.item-packages__price').textContent;
+            
+            openContentModal(itemImgJpg, itemImgWebp, itemImageAlt, itemTitle, itemText, itemPrice);
         }
 
         //Blog Modal
         if (target.classList.contains('item-blog__btn')) {            
             e.preventDefault();            
             const itemId = e.target.closest('.item-blog').dataset.blogId;
-
-            fetch('https://fpigletov-db.herokuapp.com/planet-vibe/')
-                .then(response => response.json())
-                .then((data) => {
-                    const item = data.blog[itemId];
-                    openContentModal(item.mainImageJpg, item.mainImageWebp, item.mainImageAlt, item.title, item.descr, item.date);  
-                })
-                .catch(err => alert(err));
+            const item = document.querySelector(`[data-blog-id="${itemId}"]`);  
+            const itemImgJpg = item.querySelector('.item-blog__image img').getAttribute('src');
+            const itemImgWebp = item.querySelector('.item-blog__image source').getAttribute('srcset');
+            const itemImageAlt = item.querySelector('.item-blog__image img').getAttribute('alt');
+            const itemTitle = item.querySelector('.item-blog__title').textContent;
+            const itemText = item.querySelector('.item-blog__descr').textContent;
+            const itemDate = item.querySelector('.item-blog__icon.icon-calendar').textContent;
+            
+            openContentModal(itemImgJpg, itemImgWebp, itemImageAlt, itemTitle, itemText, itemDate);
+                
         }
 
         //About
         if (target.classList.contains('about__btn')) {            
             e.preventDefault(); 
 
-            fetch('https://fpigletov-db.herokuapp.com/planet-vibe/')
-                .then(response => response.json())
-                .then((data) => {
-                    const item = data.about;
-                    openContentModal(item.mainImageJpg, item.mainImageWebp, item.mainImageAlt, item.title, item.descr);  
-                })
-                .catch(err => alert(err));
+            const itemImgJpg = document.querySelector('.about__image img').getAttribute('src');
+            const itemImgWebp = document.querySelector('.about__image source').getAttribute('srcset');
+            const itemImageAlt = document.querySelector('.about__image img').getAttribute('alt');
+            const itemTitle = document.querySelector('.about__title').textContent;
+            const itemText = document.querySelector('.about__descr').textContent;            
+            
+            openContentModal(itemImgJpg, itemImgWebp, itemImageAlt, itemTitle, itemText);               
         }
 
         //Product Modal
@@ -245,14 +251,20 @@ export function loadingModals() {
             e.preventDefault();     
             
             const itemId = e.target.dataset.prodId;
-
-            fetch('https://fpigletov-db.herokuapp.com/planet-vibe/')
-                .then(response => response.json())
-                .then((data) => {
-                    const item = data.products[itemId];
-                    openProductModal(item.id, item.mainImageJpg, item.mainImageWebp, item.mainImageAlt, item.title, item.descr, item.spec, item.icons, item.price);  
-                })
-                .catch(err => alert(err));
+            const product = document.querySelector(`[data-prod-id="${itemId}"]`);
+            const productImgJpg = product.querySelector('.item-products__image img').getAttribute('src');
+            const productImgWebp = product.querySelector('.item-products__image source').getAttribute('srcset');
+            const productImageAlt = product.querySelector('.item-products__image img').getAttribute('alt');
+            const productTitle = product.querySelector('.item-products__title').textContent;
+            const productDescr = product.querySelectorAll('.item-products__descr span');
+            const productKeys = product.querySelectorAll('.spec-product__key');
+            const productValue = product.querySelectorAll('.spec-product__value');
+            const productStars = product.querySelectorAll('.item-products__stars span');
+            const productPrice = product.querySelector('.item-products__price').textContent;
+            
+            
+            openProductModal(itemId, productImgJpg, productImgWebp, productImageAlt, productTitle, productDescr, productKeys, productValue, productStars, productPrice);  
+                
         }
     });
 }
